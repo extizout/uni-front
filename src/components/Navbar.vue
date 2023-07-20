@@ -1,7 +1,6 @@
 <template>
   <div>Hello From {{ nav }}</div>
 
-  <div v-html="vueLogo"></div>
   <nav class="nav nav-masthead container">
     <router-link to="/">Home</router-link>
     <router-link to="/signin">Login</router-link>
@@ -16,7 +15,6 @@ import { ref, defineProps, onMounted } from "vue"
 import { logOut } from "../services/authService"
 import { useUserStore } from "../stores/userStore"
 
-import vueLogo from "../assets/vue.svg"
 
 export default {
   name: "Navbar",
