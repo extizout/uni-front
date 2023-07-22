@@ -11,14 +11,13 @@ onBeforeMount( async () => {
 </script>
 
 <template>
-  <div class="container">
-    <div class="dasboard" v-if="userStore.user.role === 'member'">
+    <!-- <div class="dasboard" v-if="userStore.user.role === 'member'"> -->
     <Member></Member>
-    </div>
-    <div v-else>
-      <h1>You can sign in or sign up ..</h1>
-    </div>
-  </div>
+    <!-- </div> -->
+    <!-- <div v-else> -->
+    <!--   <h1>You can sign in or sign up ..</h1> -->
+    <!-- </div> -->
+
 </template>
 
 <style scoped>

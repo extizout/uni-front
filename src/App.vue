@@ -3,29 +3,14 @@ import Navbar from "./components/Navbar.vue"
 </script>
 
 <template>
-  <div class="bgBackground">
-    <navbar></navbar>
-    <router-view></router-view>
-  </div>
+    <v-app theme="">
+      <navbar></navbar>
+      <v-main>
+        <v-container fluid>
+          <router-view class=""></router-view>
+        </v-container>
+      </v-main>
+    </v-app>
 </template>
 
-<style>
-body {
-  background-color: #e8ecef !important;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style></style>

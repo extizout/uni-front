@@ -13,14 +13,12 @@ const credential = reactive({
 const router = useRouter()
 const userStore = useUserStore()
 
-
-
 const logIn = async () => {
   const response = await authService.logIn(credential)
   console.log(response)
   if (response.data.user) {
-    userStore.setUser(response.data.user);
-    router.push("/");
+    userStore.setUser(response.data.user)
+    router.push("/")
   }
 }
 
@@ -32,17 +30,26 @@ async function testAPI() {
       console.log(data)
     })
 }
-
 </script>
 
 <template>
   <div class="container">
     <form action="" @submit.prevent="logIn">
-      <FormFloating inputType="email" inputId="floatingEmail" placeHolder="email" labelText="Email"
-        :modelValue="credential.email" @update="credential.email = $event">
+      <FormFloating
+        inputType="email"
+        inputId="floatingEmail"
+        placeHolder="email"
+        labelText="Email"
+        v-model="credential.email"
+      >
       </FormFloating>
-      <FormFloating inputType="password" inputId="floatingPassword" placeHolder="password" labelText="Password"
-        :modelValue="credential.password" @update="credential.password = $event">
+      <FormFloating
+        inputType="password"
+        inputId="floatingPassword"
+        placeHolder="password"
+        labelText="Password"
+        v-model="credential.password"
+      >
       </FormFloating>
       <div class="mt-2">
         <button class="btn btn-light">Sign In</button>
@@ -59,6 +66,7 @@ async function testAPI() {
 .btn-light {
   margin-right: 1rem;
 }
+
 .container {
   display: flex;
   justify-content: center;

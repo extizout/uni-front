@@ -1,15 +1,21 @@
 <template>
-  <div class="container">
-    <table>
+  <v-sheet
+    color="info"
+    class="align-center justify-center "
+    elevation="8"
+    height="500"
+    width="100%"
+    rounded
+  >
+    <v-table theme="dark" fixed-header>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Email</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Role</th>
-          <th>Created Date</th>
-          <th>Actions</th>
+          <th class="text-left">ID</th>
+          <th class="text-left">Name</th>
+          <th class="text-left">Email</th>
+          <th class="text-left">Role</th>
+          <th class="text-left">Create At</th>
+          <th class="text-left">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -17,20 +23,20 @@
           <td>{{ user.User_Id }}</td>
           <td>{{ user.User_Email }}</td>
           <td>{{ user.User_Firstname }}</td>
-          <td>{{ user.User_Lastname}}</td>
+          <td>{{ user.User_Lastname }}</td>
           <td>{{ user.User_Role }}</td>
           <td>{{ user.User_Create_At }}</td>
           <td>
-            <button @click="editUser(user)">Edit</button>
-            <button @click="removeUser(user)">Remove</button>
+            <v-btn @click="dialog(user)"></v-btn>
           </td>
         </tr>
       </tbody>
-    </table>
-  </div>
+    </v-table>
+  </v-sheet>
 </template>
 
 <script setup>
+// import { mdiAccount, mdiBackspace, mdiDelete, mdiPencil } from "@mdi/js"
 import { onBeforeMount, reactive, computed, toRefs } from "vue"
 import userService from "../services/userService"
 
@@ -45,14 +51,8 @@ onBeforeMount(async () => {
 
 const { users } = toRefs(state)
 
-const editUser = (user) => {
-  // Handle edit user logic
-  console.log("edit: ", user)
-}
-
-const removeUser = (user) => {
-  // Handle remove user logic
-  console.log("remove: ", user)
+const dialog = (user) => {
+  console.log("Dialog info: ", user)
 }
 </script>
 

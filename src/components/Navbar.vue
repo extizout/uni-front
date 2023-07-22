@@ -1,20 +1,21 @@
 <template>
-  <div>Hello From {{ nav }}</div>
+  <v-app-bar>
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon icon="mdi:mdi-heart">
+        <v-icon icon="mdi:mdi-home"></v-icon>
+      </v-app-bar-nav-icon>
+    </template>
 
-  <nav class="nav nav-masthead container">
-    <router-link to="/">Home</router-link>
-    <router-link to="/signin">Login</router-link>
-    <router-link to="/signup">Sign up</router-link>
-    <router-link to="/user">User</router-link>
-    <a href="" v-if="userStore.user.id !== ''" @click.prevent="handleLogout">Log out</a>
-  </nav>
+    <v-app-bar-title>Uni</v-app-bar-title>
+    <template v-slot:append>
+      <v-icon icon="mdi:mdi-account"></v-icon>
+    </template>
+  </v-app-bar>
 </template>
-
 <script>
 import { ref, defineProps, onMounted } from "vue"
 import { logOut } from "../services/authService"
 import { useUserStore } from "../stores/userStore"
-
 
 export default {
   name: "Navbar",
@@ -25,14 +26,14 @@ export default {
 
     const handleLogout = async () => {
       userStore.$reset()
-      await logOut();
+      await logOut()
     }
 
     return {
       nav,
       linkStyle,
       handleLogout,
-      userStore
+      userStore,
     }
   },
 }

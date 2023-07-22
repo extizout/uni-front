@@ -2,20 +2,20 @@
   <div class="form-floating">
     <input
       autocomplete="off"
-      required= true
+      required="true"
       :type="inputType"
       :class="inputClass"
       :id="inputId"
       :placeholder="placeHolder"
       :value="modelValue"
-      @input="updateValue($event.target.value)"
+      @input="$emit('update:modelValue',$event.target.value)"
     />
     <label :for="inputId">{{ labelText }}</label>
   </div>
 </template>
 
 <script setup>
-import { defineProps,defineEmits } from "vue"
+import { defineProps, defineEmits } from "vue"
 
 const props = defineProps({
   inputType: String,
@@ -25,16 +25,13 @@ const props = defineProps({
   labelText: String,
   inputClass: {
     type: Object,
-    default: {'form-control': true}
-  }
+    default: { "form-control": true },
+  },
 })
 
-//Define Custom Event 
-const emit = defineEmits(["update"]);
+//Define Emit Event
+defineEmits(["update:modelValue"])
 
-const updateValue = (value) => {
-  emit("update", value);
-};
 </script>
 
 <style scoped></style>
