@@ -6,8 +6,7 @@
         inputId="floatingEmail"
         placeHolder="Email"
         labelText="Emaill"
-        :modelValue="credential.email"
-        @update="credential.email = $event"
+        v-model="credential.email"
       >
       </FormFloating>
       <FormFloating
@@ -16,8 +15,7 @@
         placeHolder="password"
         labelText="Password"
         :inputClass="passwordMismatchClass"
-        :modelValue="credential.password"
-        @update="credential.password = $event"
+        v-model="credential.password"
       >
       </FormFloating>
       <FormFloating
@@ -26,8 +24,7 @@
         placeHolder="Confirm Password"
         labelText="Confirm Password"
         :inputClass="passwordMismatchClass"
-        :modelValue="credential.passwordConfirm"
-        @update="credential.passwordConfirm = $event"
+        v-model="credential.passwordConfirm"
       >
       </FormFloating>
       <FormFloating
@@ -35,8 +32,7 @@
         inputId="floatingFirstName"
         placeHolder="First Name"
         labelText="First Name"
-        :modelValue="credential.firstName"
-        @update="credential.firstName = $event"
+        v-model="credential.firstName"
       >
       </FormFloating>
       <FormFloating
@@ -44,8 +40,7 @@
         inputId="floatingLastName"
         placeHolder="Last Name"
         labelText="Last Name"
-        :modelValue="credential.lastName"
-        @update="credential.lastName = $event"
+        v-model="credential.lastName"
       >
       </FormFloating>
       <div v-if="isPasswordMismatch" class="alert mt-5 alert-warning">
