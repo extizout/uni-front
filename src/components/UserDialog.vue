@@ -76,6 +76,7 @@
 
 <script setup>
 import { reactive, defineProps, defineEmits, onMounted } from "vue"
+import authService from "../services/authService"
 
 let { props } = defineProps({
   props: {
@@ -114,5 +115,6 @@ function closeDialog() {
 
 const update = async () => {
   alert(JSON.stringify(user))
+  const response = await authService.updateRoleAndSex(credential) 
 }
 </script>

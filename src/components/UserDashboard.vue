@@ -1,22 +1,24 @@
 <template>
   <v-app>
     <v-container>
-      <v-btn icon>
-        <v-icon icon="mdi-home"></v-icon>
+      <v-btn icon @click="handleClick">
+        <v-icon icon="mdi:mdi-home"></v-icon>
       </v-btn>
 
 
-      <v-card v-for="item in items" class="mx-auto" max-width="300">
-        <v-list :items="item"></v-list>
-      </v-card>
 
+      <test v-model="showDialog"></test> 
     </v-container>
   </v-app>
 </template>
 
 <script setup>
-const items = ['a','b','c']
-</script>
+import test from "./test.vue"
+import { ref } from "vue"
 
-<style scoped>
-</style>
+const showDialog = ref(false)
+function handleClick() {
+  showDialog.value = !showDialog.value
+}
+
+</script>

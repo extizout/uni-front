@@ -5,6 +5,8 @@ import AdminDashboard from "./components/AdminDashboard.vue";
 import MemberList from "./components/MemberList.vue"
 import UserDashboard from "./components/UserDashboard.vue"
 import Welcome from "../src/views/Welcome.vue"
+import SideBar from "./components/SideBar.vue"
+import UserDialog from "./components/UserDialog.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,6 +17,7 @@ const router = createRouter({
     { path: "/admin", component: AdminDashboard },
     { path: "/user", component: MemberList },
     { path: "/test", component: UserDashboard },
+    { path: "/sidebar", component: SideBar },
   ],
 });
 
