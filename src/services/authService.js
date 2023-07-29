@@ -15,7 +15,7 @@ export const isAuthenticated = async () => {
 export const getUser = async () => {
   try {
     const response = await uniEndpoint.get("/auth/getUser");
-    return response.data;
+    return response.data.user;
   } catch (error) {
     return error.response.data;
   }

@@ -20,11 +20,11 @@
       </thead>
       <tbody>
         <tr v-for="(user, index) in users" :key="index">
-          <td>{{ user.User_Id }}</td>
-          <td>{{ user.User_Firstname + " " + user.User_Lastname }}</td>
-          <td>{{ user.User_Email }}</td>
-          <td>{{ user.User_Role }}</td>
-          <td>{{ user.User_Create_At }}</td>
+          <td>{{ user.userId }}</td>
+          <td>{{ user.firstName + " " + user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.createDate }}</td>
           <td>
             <v-btn @click="handleDialog(user)" color="red">
               <v-icon :icon="mdiPencil"></v-icon>

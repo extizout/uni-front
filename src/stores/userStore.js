@@ -9,7 +9,7 @@ export const useUserStore = defineStore("users", () => {
     role: "",
     firstName: "",
     lastName: "",
-    createdDate: "",
+    createDate: "",
   });
 
   const activeRole = computed(() => {
@@ -29,7 +29,7 @@ export const useUserStore = defineStore("users", () => {
     user.role = "";
     user.firstName = "";
     user.lastName = "";
-    user.createdDate = "";
+    user.createDate = "";
 
     // user = {
     //   ...user = ""
@@ -46,12 +46,7 @@ export const useUserStore = defineStore("users", () => {
 
   async function setUser(resObject){
     const {
-      User_Id: id,
-      User_Email: email,
-      User_Role: role,
-      User_Firstname: firstName,
-      User_Lastname: lastName,
-      User_Create_At: createdDate,
+      userId: id, ...rest
     } = resObject;
 
     // user = {
@@ -59,11 +54,11 @@ export const useUserStore = defineStore("users", () => {
     //   id, email, role, firstName, lastName,createdDate
     // }
     user.id = id;
-    user.email = email;
-    user.role = role;
-    user.firstName = firstName;
-    user.lastName = lastName;
-    user.createdDate = createdDate;
+    user.email = rest.email;
+    user.role = rest.role;
+    user.firstName = rest.firstName;
+    user.lastName = rest.lastName;
+    user.createDate = rest.createDate;
   }
 
   return {
