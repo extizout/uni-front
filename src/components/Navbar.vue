@@ -30,6 +30,10 @@ const userStore = useUserStore()
 const isAdmin = ref(false)
 const drawer = ref(false)
 
+onMounted(async () => {
+  await userStore.getUserData()
+})
+
 const handleLogout = async () => {
   userStore.$reset()
   await logOut()

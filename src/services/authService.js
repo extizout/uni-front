@@ -17,7 +17,10 @@ export const getUser = async () => {
     const response = await uniEndpoint.get("/auth/getUser");
     return response.data.user;
   } catch (error) {
-    return error.response.data;
+    throw {
+      status: error.response.status,
+      statusText: error.response.statusText,
+    };
   }
 };
 
@@ -74,20 +77,22 @@ export const logOut = async () => {
   }
 };
 
-export const putRoleAndSex = async(credentials) => {
+export const putRoleAndSex = async (credentials) => {
   try {
     const credential = {
       id: credentials.id,
       role: credentials.role,
-      sex: credentials.sex
-    }
-    
-    const response = await uniEndpoint.put(`/auth/${credential.id}`, credential)
+      sex: credentials.sex,
+    };
+
+    const response = await uniEndpoint.put(
+      `/auth/${credential.id}`,
+      credential
+    );
     return response;
   } catch (error) {
-    alert("Invalid Credential.")
+    alert("Invalid Credential.");
   }
-
 };
 
 export default {

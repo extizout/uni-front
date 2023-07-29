@@ -13,14 +13,14 @@ export const useUserStore = defineStore("users", () => {
   });
 
   const activeRole = computed(() => {
-    return user.role
-  })
+    return user.role;
+  });
 
   const name = computed(() => {
     if (user.firstName !== undefined || user.lastName !== undefined) {
       return user.firstName + " " + user.lastName;
     }
-    return null
+    return null;
   });
 
   function $reset() {
@@ -37,17 +37,16 @@ export const useUserStore = defineStore("users", () => {
   }
 
   async function getUserData() {
-    const responseData = await uniAPI.getUser();
-    if (!responseData) {
-      return null
+    try {
+      const responseData = await uniAPI.getUser();
+      setUser(responseData);
+    } catch (error) {
+      console.error("Error: ", error);
     }
-    setUser(responseData)
   }
 
-  async function setUser(resObject){
-    const {
-      userId: id, ...rest
-    } = resObject;
+  async function setUser(resObject) {
+    const { userId: id, ...rest } = resObject;
 
     // user = {
     //   ...user,
@@ -67,7 +66,7 @@ export const useUserStore = defineStore("users", () => {
     setUser,
     name,
     activeRole,
-    $reset
+    $reset,
   };
 });
 
