@@ -3,7 +3,7 @@
     <v-card-text>
       <v-card-title>
         <span class="text-h5">
-          User {{ user.User_Firstname + " " + user.User_Lastname }}
+          User {{ user.firstName + " " + user.lastName }}
         </span>
       </v-card-title>
       <v-container>
@@ -11,7 +11,7 @@
           <v-col cols="12" sm="6" md="6">
             <v-text-field
               label="First name*"
-              v-model="user.User_Firstname"
+              v-model="user.firstName"
               prepend-inner-icon="mdi:mdi-account"
               readonly
               required
@@ -20,7 +20,7 @@
           <v-col cols="12" sm="6" md="6">
             <v-text-field
               label="Last name*"
-              v-model="user.User_Lastname"
+              v-model="user.lastName"
               prepend-inner-icon="mdi:mdi-account"
               hint="example of persistent helper text"
               persistent-hint
@@ -31,7 +31,7 @@
           <v-col cols="12">
             <v-text-field
               label="Email*"
-              v-model="user.User_Email"
+              v-model="user.email"
               prepend-inner-icon="mdi:mdi-email"
               disable="true"
               readonly
@@ -49,7 +49,7 @@
           <v-col cols="12" sm="6">
             <v-autocomplete
               label="Role"
-              v-model="user.User_Role"
+              v-model="user.role"
               :items="roleList"
             >
             </v-autocomplete>
@@ -57,7 +57,7 @@
           <v-col cols="12" sm="6">
             <v-autocomplete
               label="Sex"
-              v-model="user.User_Sex"
+              v-model="user.sex"
               prepend-inner-icon="mdi:mdi-gender-transgender"
               :items="sexList"
             ></v-autocomplete>
@@ -84,11 +84,11 @@ let { props } = defineProps({
   },
 })
 let user = reactive({
-  User_Email: "",
-  User_Firstname: "",
-  User_Lastname: "",
-  User_Role: "",
-  User_Sex: "",
+  email: "",
+  firstName: "",
+  lastName: "",
+  role: "",
+  sex: "",
 })
 
 onMounted(() => {
