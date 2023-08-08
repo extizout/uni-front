@@ -15,8 +15,7 @@ const userStore = useUserStore()
 
 const logIn = async () => {
   const response = await authService.logIn(credential)
-  console.log(response)
-  if (response.data.user) {
+  if (response) {
     userStore.setUser(response.data.user)
     router.push("/")
   }
