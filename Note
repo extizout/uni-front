@@ -1,5 +1,3 @@
 WIP
-1: Doing updateRoleAndSex
-files
-- authService
-- UserDialog
+------ Front --------
+1: User Page component

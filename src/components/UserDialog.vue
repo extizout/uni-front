@@ -38,20 +38,8 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Password*"
-              prepend-inner-icon="mdi:mdi-lock"
-              type="password"
-              required
-            ></v-text-field>
-          </v-col>
           <v-col cols="12" sm="6">
-            <v-autocomplete
-              label="Role"
-              v-model="user.role"
-              :items="roleList"
-            >
+            <v-autocomplete label="Role" v-model="user.role" :items="roleList">
             </v-autocomplete>
           </v-col>
           <v-col cols="12" sm="6">
@@ -76,7 +64,7 @@
 
 <script setup>
 import { reactive, defineProps, defineEmits, onMounted } from "vue"
-import authService from "../services/authService"
+import userService from "../services/userService"
 
 let { props } = defineProps({
   props: {
@@ -84,6 +72,7 @@ let { props } = defineProps({
   },
 })
 let user = reactive({
+  userId: "",
   email: "",
   firstName: "",
   lastName: "",
@@ -114,7 +103,13 @@ function closeDialog() {
 }
 
 const update = async () => {
-  alert(JSON.stringify(user))
-  const response = await authService.updateRoleAndSex(credential) 
+  try {
+    const response = await userService.putRoleAndSex(user)
+    if (response.data) {
+      emit("closeDialog", user)
+    }
+  } catch (error) {
+    console.error(error)
+  }
 }
 </script>

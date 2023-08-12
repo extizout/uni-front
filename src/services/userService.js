@@ -2,28 +2,6 @@ import api from "../services/api";
 
 const uniEndpoint = api.uniAPI();
 
-//translate communication between backend and vue because name assign
-const translateBackName = async (resObject) => {
-  const {
-    User_Id: id,
-    User_Email: email,
-    User_Role: role,
-    User_Firstname: firstName,
-    User_Lastname: lastName,
-    User_Create_At: createdDate,
-  } = resObject;
-
-  const user = {
-    id: id,
-    email: email,
-    role: role,
-    firstName: firstName,
-    lastName: lastName,
-    createdDate: createdDate,
-  };
-  return user
-};
-
 export const getAllUsers = async () => {
   try {
     const response = await uniEndpoint.get("/user");
@@ -33,6 +11,26 @@ export const getAllUsers = async () => {
     console.error(error);
   }
 };
+
+export const putRoleAndSex = async (credentials) => {
+  try {
+    const credential = {
+      userId: credentials.userId,
+      role: credentials.role,
+      sex: credentials.sex,
+    };
+
+    const response = await uniEndpoint.put(
+      `/user/role&sex/${credential.userId}`,
+      credential
+    );
+    return response;
+  } catch (error) {
+    alert("Invalid Credential.");
+  }
+};
+
 export default {
   getAllUsers,
+  putRoleAndSex,
 };

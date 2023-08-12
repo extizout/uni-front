@@ -77,29 +77,10 @@ export const logOut = async () => {
   }
 };
 
-export const putRoleAndSex = async (credentials) => {
-  try {
-    const credential = {
-      id: credentials.id,
-      role: credentials.role,
-      sex: credentials.sex,
-    };
-
-    const response = await uniEndpoint.put(
-      `/auth/${credential.id}`,
-      credential
-    );
-    return response;
-  } catch (error) {
-    alert("Invalid Credential.");
-  }
-};
-
 export default {
   isAuthenticated,
   logOut,
   logIn,
   getUser,
   register,
-  updateRoleAndSex: putRoleAndSex,
 };
