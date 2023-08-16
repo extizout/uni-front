@@ -17,10 +17,7 @@ export const getUser = async () => {
     const response = await uniEndpoint.get("/auth/getUser");
     return response.data.user;
   } catch (error) {
-    throw {
-      status: error.response.status,
-      statusText: error.response.statusText,
-    };
+    throw error;
   }
 };
 
